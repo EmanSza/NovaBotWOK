@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "wokcommands": "^1.5.3"
+  },
+  "name": "novabotwok",
+  "version": "1.0.0",
+  "description": "NovaBot with WOK COmmands",
+  "main": "./source/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EmanSza",
+  "license": "MIT"
+}
