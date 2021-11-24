@@ -1,4 +1,5 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { buttonIDs } = require('../../config/WOK.json');
 module.exports = {
     category: 'Testing',
     description: 'Replies with pong', // Required for slash commands
@@ -12,8 +13,17 @@ module.exports = {
         const embed = new MessageEmbed()
         .setTitle('Pong!')
 
+        const row = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+            .setCustomId(buttonIDs.ping)
+            .setLabel('Primary')
+            .setStyle('PRIMARY'),
+        );
+
       interaction.reply({
-        embeds: [embed]
+        embeds: [embed],
+        components: [row]
       })
     },
   }

@@ -13,5 +13,10 @@
 
     "disabledCommands": [
         "language"
-    ]
+    ],
+
+
+    "buttonIDs": {
+        "ping": "testButtonListner"
+    }
 }

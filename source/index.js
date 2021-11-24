@@ -27,6 +27,7 @@ client.on('ready', () => {
     setDefaultPrefix: '!',
 
     commandsDir: path.join(__dirname, 'commands'),
+    featuresDir: path.join(__dirname, 'events'),
     disabledDefaultCommands: disabledCommands,
 
     botOwners: ownerID,
