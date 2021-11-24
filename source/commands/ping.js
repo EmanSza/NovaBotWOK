@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
     category: 'Testing',
     description: 'Replies with pong', // Required for slash commands
@@ -6,12 +7,13 @@ module.exports = {
     testOnly: true, // Only register a slash command for the testing guilds
     
     callback: ({ message, interaction }) => {
-      const reply = 'Pong!'
-      // message is provided only for a legacy command
+      
+        // Create a Embed
+        const embed = new MessageEmbed()
+        .setTitle('Pong!')
 
-      // interaction is provided only for a slash command
       interaction.reply({
-        content: reply
+        embeds: [embed]
       })
     },
   }
