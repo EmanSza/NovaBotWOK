@@ -1,7 +1,7 @@
 const { buttonIDs } = require('../../config/WOK.json');
-module.export = (client, instance) => {
+module.exports = (client, instance) => {
     // Create a new button listener
-    client.on("interactionCreate") (async (interaction) => {
+    client.on("interactionCreate", (interaction) =>  {
         console.log(`[EVENT] Button listener created for ${interaction.id}`);
         // Check if the interaction is a button
         if(!interaction.isButton()) return;
@@ -12,8 +12,8 @@ module.export = (client, instance) => {
             console.log(`Button with the ID: ${buttonIDs[i]} has been pressed`);
         }
     });
-    console.log("Button Clicked")
 }
 module.exports.config = {
-
+    displayName: 'Button Listener',
+    dbName: 'buttonListener'
 }
