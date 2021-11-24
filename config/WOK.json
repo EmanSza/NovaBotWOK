@@ -1,0 +1,17 @@
+{
+    "testServersArray": [
+        "82217598718089629"
+    ],
+
+    "ownerID": [
+        "82217598718089629"
+    ],
+
+    "databaseSettings": {
+        "keepAlive": true
+    },
+
+    "disabledCommands": [
+        "language"
+    ]
+}

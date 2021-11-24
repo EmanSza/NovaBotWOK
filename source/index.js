@@ -1,8 +1,17 @@
 const DiscordJS = require('discord.js')
 const WOKCommands = require('wokcommands')
+
 const path = require('path')
-const { env } = require('process')
 require('dotenv').config()
+
+// JSON Object For Cleaner Code
+const { 
+  testServersArray,
+  ownerID,
+  databaseSettings,
+  disabledCommands
+} = require('../config/WOK.json')
+
 const { Intents } = DiscordJS
 const client = new DiscordJS.Client({
   // These intents are recommended for the built in help menu
@@ -15,9 +24,24 @@ const client = new DiscordJS.Client({
 // Client ready event
 client.on('ready', () => {
   new WOKCommands(client, {
-    // The name of the local folder for your command files
+    setDefaultPrefix: '!',
+
     commandsDir: path.join(__dirname, 'commands'),
-    testServers: ['822175987180896297']
+    disabledDefaultCommands: disabledCommands,
+
+    botOwners: ownerID,
+    testServers: testServersArray,
+
+    // Database
+     mongoUri: process.env.MONGODB_URI,
+     dbOptions: databaseSettings,
+
+     // Boolean Statements
+     debugger: false,
+
   })
 })
+
+// Login to Discord with TOKEN, if token is empty throw error.
+if(!process.env.TOKEN) throw new Error('No token found');
 client.login(process.env.TOKEN);
