@@ -7,10 +7,10 @@ module.exports = (client, instance) => {
         if(!interaction.isButton()) return;
         // Loop through all the buttons IDs and check if the interaction is one of them
         for(let i = 0; i < buttonIDs.length; i++) {
-            // If the ID does not match the interaction ID, continue
-            if(buttonIDs[i] !== interaction.id) continue;
-            console.log(`Button with the ID: ${buttonIDs[i]} has been pressed`);
+            // if the interaction is a button, check if it is the one we want
+            if(buttonIDs[i] !== interaction.customId && i >= buttonIDs.length) return;
         }
+        // Now we know that the interaction is a button and it is the one we want to listen to
     });
 }
 module.exports.config = {
