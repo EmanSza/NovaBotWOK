@@ -16,7 +16,11 @@
     ],
 
 
-    "buttonIDs": {
-        "ping": "testButtonListner"
+    "buttonURL": {
+        "ping": "testButtonListner",
+
+         "timeExemptURL": {
+            "ping": "ping"
+         }
     }
 }

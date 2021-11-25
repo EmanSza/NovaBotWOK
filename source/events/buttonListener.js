@@ -1,16 +1,29 @@
-const { buttonIDs } = require('../../config/WOK.json');
-module.export = (client, instance) => {
+const { buttonURL } = require('../../config/WOK.json');
+module.exports = (client, instance) => {
     // Create a new button listener
     client.on("interactionCreate") (async (interaction) => {
         console.log(`[EVENT] Button listener created for ${interaction.id}`);
         // Check if the interaction is a button
         if(!interaction.isButton()) return;
-        // Loop through all the buttons IDs and check if the interaction is one of them
-        for(let i = 0; i < buttonIDs.length; i++) {
-            // If the ID does not match the interaction ID, continue
-            if(buttonIDs[i] !== interaction.id) continue;
-            console.log(`Button with the ID: ${buttonIDs[i]} has been pressed`);
-        }
+            // Get minutes since interaction was created
+            let minutes = Math.round(Date.now() - interaction.message.createdTimestamp) / 60000;
+            //  if a button is older then 15 and it is not expemted, delete it
+            const interactionCustomURL = interaction.customId; 
+            if(minutes > 15 && interaction.customId != buttonURL.timeExemptURL.interactionCustomURL) {
+                // Delete the orginal message and make it emphialized
+                interaction.message.delete();
+                let newInteration = interaction.message.channel.send(`<@${interaction.message.author.id}>`, {
+                    embed: {
+                        color: 0xFF0000,
+                        description: `Your button has been deleted because it was created over 15 minutes ago.`
+                    }
+                });
+                // Delete the new interaction after 5 seconds
+                setTimeout(() => {
+                    newInteration.delete();
+                }, 5 * 1000);
+            }
+            // Now we know that the interaction is a button and it is the one we want to listen to
     });
     console.log("Button Clicked")
 }
