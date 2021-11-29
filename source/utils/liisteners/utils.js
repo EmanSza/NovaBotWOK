@@ -1,6 +1,6 @@
 const { buttonURL } = require('../../../config/WOK.json');
 
-function timeExemptMessage(interactionn) {
+function timeExemptCheck(interaction) {
      let timeTillDelete = 15;
      let timeExempt = false;
     for(var i = 0; i > buttonURL.timeExemptURL.length; i++) {
@@ -15,18 +15,15 @@ let minutes = Math.round(Date.now() - interaction.message.createdTimestamp) / 60
 if(minutes > timeTillDelete && !timeExempt) {
     // Delete the orginal message and make it emphialized
     interaction.message.delete();
-    let newInteration = interaction.followUp({
-        content: `The Button is older then ${timeTillDelete}, please resend the command`,
-        emphialize: true
+    interaction.reply({
+        content: 'The Button is older then ' + timeTillDelete + ' minutes, please resend the command',
+        ephemeral: true
     })
-    setTimeout(() => {
-        newInteration.delete();
-    }, 5 * 1000);
 returnValue = true;
 }
 return returnValue;
 }
 
 module.exports = {
-    timeExemptCheck, timeExemptMessage
+    timeExemptCheck
 }
