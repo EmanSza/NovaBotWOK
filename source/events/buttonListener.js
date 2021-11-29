@@ -10,9 +10,14 @@ module.exports = (client, instance) => {
             const interactionCustomURL = interaction.customId; 
             console.log(interactionCustomURL);
              // take buttonURL.timeExemptURL and add it to the interactionCustomURL
-            
+            let timeExempt = false;
             timeTillDelete = 15;
-            if(minutes > timeTillDelete && interaction.interactionCustomURL.includes(buttonURL.timeExemptURL.ping)) {
+            for(var i = 0; i > buttonURL.timeExemptURL.length; i++) {
+                if(buttonURL.timeExemptURL[i] == interaction.customId) timeExempt = true;
+                if(buttonURL.timeExemptURL[i] == interaction.customId) break;
+            }
+
+            if(minutes > timeTillDelete && interaction.customId == buttonURL.timeExemptURL[i]) {
                 // Delete the orginal message and make it emphialized
                 interaction.message.delete();
                 let newInteration = interaction.followUp({
