@@ -5,6 +5,7 @@ module.exports = (client, instance) => {
         console.log(`[ButtonListener] Created button interaction: ${interaction.id}`);
          let timeCheck = timeExemptCheck(interaction);
         if(timeCheck) return;
+        // Add Functions/Button Code here and listen for customId
 
     });
 }
