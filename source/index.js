@@ -38,10 +38,20 @@ client.on('ready', () => {
      dbOptions: databaseSettings,
 
      // Boolean Statements
-     debugger: false,
+     debugger: false
+  });
 
-  })
 })
+.setCategorySettings([
+  {
+    name: 'Misc',
+    emoji: '🃏'
+  },
+  {
+    name: 'Moderation',
+    emoji: '🚨'
+  }
+])
 
 // Login to Discord with TOKEN, if token is empty throw error.
 if(!process.env.TOKEN) throw new Error('No token found');
