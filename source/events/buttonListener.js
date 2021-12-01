@@ -1,4 +1,4 @@
-const { timeExemptCheck } = require('../utils/liisteners/utils')
+const { timeExemptCheck } = require('../utils/listeners/utils')
 module.exports = (client, instance) => {
     client.on("interactionCreate", (interaction) =>  {
         if(!interaction.isButton()) return;
