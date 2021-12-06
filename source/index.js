@@ -35,7 +35,10 @@ client.on('ready', () => {
 
     // Database
      mongoUri: process.env.MONGODB_URI,
-     dbOptions: databaseSettings,
+     
+     dbOptions: {
+       keepAlive: true,
+     },
 
      // Boolean Statements
      debugger: false
