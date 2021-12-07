@@ -11,5 +11,11 @@ const guild = Schema({
             value: String,
         }]
      }],
+
+    logChannel: {
+        channel: String,
+        enabled: Boolean,
+
+    }
 });
 module.exports = model('guild', guildSchema);
