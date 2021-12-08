@@ -1,14 +1,16 @@
 const { Schema, model } = require('mongoose');
 
-const guild = Schema({
+const guildSchema = Schema({
   _id: String,
 
     selectMenu: [{ 
         customId: String,
+        isReaction: Boolean,
         options: [{
             label: String,
             discription: String,
             value: String,
+            roleId: String,
         }]
      }],
 
