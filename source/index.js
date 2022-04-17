@@ -1,6 +1,7 @@
 const DiscordJS = require('discord.js')
 const WOKCommands = require('wokcommands')
-
+const guildScehma = require('../config/schemas/guild.js')
+const { interaction } = require('discord.js')  
 const path = require('path')
 require('dotenv').config()
 
@@ -35,12 +36,14 @@ client.on('ready', () => {
 
     // Database
      mongoUri: process.env.MONGODB_URI,
-     dbOptions: databaseSettings,
+     
+     dbOptions: {
+       keepAlive: true,
+     },
 
      // Boolean Statements
      debugger: false
   })
-  
   .setCategorySettings([
     {
       name: 'Misc',
@@ -53,7 +56,7 @@ client.on('ready', () => {
   ])
 
 })
-
+ interaction.guildScehma = guildScehma
 // Login to Discord with TOKEN, if token is empty throw error.
 if(!process.env.TOKEN) throw new Error('No token found');
 client.login(process.env.TOKEN);
